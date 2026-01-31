@@ -1,0 +1,25 @@
+[project]
+name = "nqs-sr-2d"
+version = "0.1.0"
+description = "Neural Quantum States for 2D Anharmonic Systems via Stochastic Reconfiguration"
+authors = [
+    { name = "Hari Hardiyan", email = "lorozloraz@gmail.com" }
+]
+dependencies = [
+    "jax>=0.4.0",
+    "jaxlib>=0.4.0",
+    "optax>=0.1.0",
+    "matplotlib>=3.5.0",
+    "numpy>=1.21.0",
+]
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["quantum-physics", "neural-quantum-states", "jax", "stochastic-reconfiguration"]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["nqs_sr_2d_monolithic"]
