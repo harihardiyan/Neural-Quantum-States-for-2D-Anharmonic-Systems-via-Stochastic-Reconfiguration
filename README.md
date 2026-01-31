@@ -73,19 +73,19 @@ The NQS result successfully converges to a variational upper bound within **0.07
 
 ## Implementation Details
 
-### ### Dependencies
+###  Dependencies
 The script is monolithic and requires:
 - `jax`
 - `jaxlib`
 
-### ### Execution
+###  Execution
 Run the monolithic solver using the following command:
 ```bash
 python nqs_sr_2d_monolithic.py
 ```
 
 ## Citation
-> Hardiyan, H. (2026). 2D Neural Quantum States via Deterministic Stochastic Reconfiguration. lorozloraz@gmail.com.
+> Hardiyan, H. (2026). Neural Quantum States for 2D Anharmonic Systems via Stochastic Reconfiguration. lorozloraz@gmail.com.
 
 ## License
 Licensed under the **MIT License**. See the [LICENSE](https://opensource.org/licenses/MIT) file for more details.
