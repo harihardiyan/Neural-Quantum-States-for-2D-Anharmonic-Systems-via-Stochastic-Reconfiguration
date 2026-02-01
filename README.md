@@ -23,11 +23,11 @@ This project implements a monolithic solver for the 2D Schrödinger equation usi
 The trial wavefunction $\Psi_{\theta}(\mathbf{r})$ is defined as:
 $$\Psi_{\theta}(x, y) = e^{f_{\text{MLP}}(x, y)} \cdot g(x, y)$$
 
-### ### Symmetry Enforcement
+### Symmetry Enforcement
 To ensure the ground state resides in the even-parity sector, the MLP output $f_{\text{MLP}}$ is symmetrized across all four quadrants to enforce global parity:
 $$f_{\text{sym}}(x, y) = \frac{1}{4} [f(x, y) + f(-x, y) + f(x, -y) + f(-x, -y)]$$
 
-### ### Boundary Factor
+### Boundary Factor
 Dirichlet boundary conditions ($\Psi=0$ at the edges) are analytically enforced using a geometric factor:
 $$g(x, y) = (1 - (2x/L_x)^2) \cdot (1 - (2y/L_y)^2)$$
 This factor restricts the Hilbert space to physically valid states, allowing the neural network to focus exclusively on the high-curvature regions of the potential.
@@ -36,10 +36,10 @@ This factor restricts the Hilbert space to physically valid states, allowing the
 
 ### 2. Hamiltonian Operator
 
-### ### Matrix-Free Kinematics
+###  Matrix-Free Kinematics
 The kinetic operator is implemented via a **4th-order Finite Difference stencil**. To maintain memory efficiency, the Laplacian is applied using a matrix-free approach, avoiding the construction of large $N^2 \times N^2$ matrices while providing $O(\Delta x^4)$ precision.
 
-### ### Potential Energy
+### Potential Energy
 The solver supports arbitrary 2D potentials, with built-in configurations for:
 - **Anharmonic Oscillator:** $V(r) = \frac{1}{2}r^2 + \lambda r^4$.
 - **Double-Well Potential:** $V(x, y) = \lambda(x^2 - a^2)^2 + \frac{1}{2}y^2$.
@@ -48,7 +48,7 @@ The solver supports arbitrary 2D potentials, with built-in configurations for:
 
 ### 3. Optimization Logic
 
-### ### Stochastic Reconfiguration (SR)
+### Stochastic Reconfiguration (SR)
 Parameter updates follow the **Natural Gradient** in the Hilbert space manifold. The update rule is governed by the Fisher Information Matrix (S-matrix):
 $$\theta_{t+1} = \theta_t - \eta S^{-1} \nabla E$$
 A Tikhonov regularization (damping) of $10^{-3}$ is added to the S-matrix diagonal to ensure numerical stability during inversion.
@@ -66,7 +66,7 @@ Evaluated on the 2D Anharmonic Oscillator ($\lambda=0.1, L=8, N=32$):
 | **Local Energy Variance** | $\approx 5.06 \times 10^{-4}$ |
 | **S-Matrix Condition Number** | $\approx 3.89 \times 10^2$ |
 
-### ### Interpretation
+### Interpretation
 The NQS result successfully converges to a variational upper bound within **0.07%** of the high-precision finite difference benchmark. The low variance of the local energy and the well-conditioned S-matrix indicate that the neural ansatz has effectively approximated the true eigenstate within the grid's resolution.
 
 ---
